@@ -29,9 +29,11 @@ export default {
     },
     methods: {
       emitHome(){
-        if(this.aconce)
+        if(this.aconce){
           this.$emit("swiperLoadOK");
+          this.$bus.emit("swiperLoadOK");
           this.aconce = false
+          }
       }
     },
     data() {

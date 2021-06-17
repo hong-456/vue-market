@@ -86,6 +86,18 @@ import { getSwiper,getHomeMultidata } from 'network/home';
       this.HomeMultidata("boutique")
       
     },
+    activated() {
+      this.$refs.scroll.refresh()
+      this.$refs.scroll.MyScrollTo(0,this.tabControlActive,0)
+      
+    },
+    deactivated() {
+      this.tabControlActive = this.$refs.scroll.scroll.y
+      this.$bus.off("swiperLoadOK",()=>{
+        console.log(this.$refs.tabControl2.$el.offsetTop);
+      })
+      
+    },
     methods:{
       HomeMultidata(type){
         //每次调用方法时，获取当前页码，然后发送请求获取页码的下一页的数据
@@ -139,7 +151,7 @@ import { getSwiper,getHomeMultidata } from 'network/home';
         //   top:0,
         //   behavior:"smooth"
         // })
-        console.log("a");
+        console.log("to top");
       },
       // 获取当前滚动到的位置
       ControlScroll(position){
@@ -180,7 +192,7 @@ import { getSwiper,getHomeMultidata } from 'network/home';
     top: 0;
     left: 0;
     right: 0;
-
+    
     z-index: 999;
   }
   #home{

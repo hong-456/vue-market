@@ -13,7 +13,7 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
     .nav-bar{
         display: flex;
         line-height: 44px;
@@ -25,7 +25,7 @@ export default {
         }
         .center{
             flex:1;
-            
+            text-align: center;
         }
         text-align:center
        

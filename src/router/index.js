@@ -1,10 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 const Home = ()=>import("@/views/Home/Home");
-const My = ()=>import("@/views/My/my");
-const Chat = ()=>import("@/views/Chat/chat");
+const Cart = ()=>import("@/views/Cart/Cart");
 const Find = ()=>import("@/views/Find/find");
-
-
+const Detail = ()=>import("@/views/Detail/detail")
+const My = ()=>import("@/views/My/my")
 const routes = [
     {
       path:"/",
@@ -21,25 +20,31 @@ const routes = [
       },
     },
     {
-      path: '/my',
-      name: 'my',
+      path: '/qqq',
+      name: 'qqq',
       component: My,
-      meta: {
-        title: 'Home',
-        keepAlive: true
-      },
     },
     {
-      path: '/chat',
-      name: 'chat',
-      component: Chat,
+      path: '/Cart',
+      name: 'Cart',
+      component: Cart,
       
     },
     {
       path: '/find',
       name: 'find',
       component: Find
+      
     },
+    {
+      path:"/detail",
+      name:"detail",
+      component:Detail,
+      meta: {
+        title: 'Home',
+        keepAlive: false
+      }
+    }
   ]
   
   const router = createRouter({

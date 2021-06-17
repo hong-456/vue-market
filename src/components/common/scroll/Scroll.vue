@@ -17,24 +17,24 @@ export default {
     },
     props:{
       probeType:{
-        type:Number,
+        type:Number,//需要传入数字决定是否监听滚动
         default:0
       },
       pullUpLoad:{
-        type:[Boolean,Object],
+        type:[Boolean,Object],//传入布尔或对象决定是否开启上拉加载
         default:false
       }
     },
     mounted() {
        this.scroll = new Bscroll(this.$refs.wrapper,{
-        observeDOM:true,
-        mouseWheel:true,
+        observeDOM:true,// DOM加载新东西自动调用refresh
+        mouseWheel:true,// 允许使用鼠标滚轮操作
         probeType:this.probeType,
         pullUpLoad:this.pullUpLoad,
-        click:true
+        click:true,
+        keepAlive:true
         
       })
-      console.log("ss");
       // 在probeType==2||3 吗，也就是使用者需要监听的时候，才开启监听
       if(this.probeType==2 || this.probeType==3) {
         this.scroll.on('scroll',(position)=>{

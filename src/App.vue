@@ -19,6 +19,7 @@ export default {
     mainTabbar
   }
 }
+
 </script>
 
 <style lang="less">

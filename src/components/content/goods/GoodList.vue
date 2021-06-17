@@ -1,6 +1,6 @@
 <template>
   <div class="goods">
-    <good-list-item v-for="item in goods" :key="item._id" :goodsItem="item"/>
+    <good-list-item v-for="item in goods" :key="item._id" :goodsItem="item" @click.native="JumpDetail(item._id)"/>
   </div>
   
 </template>
@@ -24,7 +24,17 @@ export default {
     },
     components:{
         GoodListItem
-    }
+    },
+    methods: {
+        JumpDetail(id){
+            this.$router.push({
+                path:"/detail",
+                query:{
+                    id
+                }
+            })
+        }
+    },
 }
 </script>
 
@@ -32,6 +42,7 @@ export default {
     .goods{
         display: flex;
         flex-wrap: wrap;
+        /* flex-direction: column; */
         /* space-evenly将所有组件均等分，但兼容性不太好 */
         justify-content: space-evenly;
         /* space-around让组件之间的间隔是：最左最右的组件和边界的间隔的两倍 

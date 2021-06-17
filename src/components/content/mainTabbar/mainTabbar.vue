@@ -24,7 +24,7 @@
           <div>发现</div>
         </template>
       </item>
-       <item link="/chat" activeColor="yellow">
+       <item link="/Cart">
         <template v-slot:img>
           <img src="~assets/img/tabbar/chat.png" alt="">
         </template>
@@ -32,10 +32,10 @@
           <img src="~assets/img/tabbar/chat1.png" alt="">
         </template>
         <template v-slot:text>
-          <div>聊天</div>
+          <div>购物车</div>
         </template>
       </item>
-       <item link="/my" activeColor="deeppink">
+       <item link="/qqq" activeColor="deeppink">
         <template v-slot:img>
           <img src="~assets/img/tabbar/user.png" alt="">
         </template>
