@@ -4,7 +4,10 @@
 ```
 npm install
 ```
-
+### intruduce
+```
+这是一个vue商城实例练习，根据codewhy老师的教程制作
+```
 ### Compiles and hot-reloads for development
 ### 启动项目，也可以先启动node本地服务器后再启动
 ```
