@@ -40,7 +40,9 @@
     methods:{
       itemClick(){
         // console.log("itemClick");
+        // this.$router.push(this.link)
         this.$router.replace(this.link)
+        
       }
     }
   }

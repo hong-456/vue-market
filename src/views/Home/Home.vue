@@ -64,6 +64,7 @@ import { getSwiper,getHomeMultidata } from 'network/home';
         contrShow:false,//创建布尔值，判断第一个tabControl是否显示，滚动到某一位置就显示
         tabControlActive:0, //保存当前活跃的tabControl
         tabControlTop:0, // tabControl距离顶部高度
+        nowPosition:0, // 当前滚动位置
         }
     },
     components:{
@@ -139,10 +140,12 @@ import { getSwiper,getHomeMultidata } from 'network/home';
             break;
           }
         };
+        // 设置当前活跃的组件，改变样式
         this.$refs.tabControl1.currentIndex = index;
         this.$refs.tabControl2.currentIndex = index;
-        this.$refs.scroll.MyScrollTo(0,-this.$refs.tabControl2.$el.offsetTop,1)
-
+        // 如果在商品列表中点击了吸顶的列表，返回到列表位置，如果不是，不滚动
+        if(this.nowPosition > this.$refs.tabControl2.$el.offsetTop)
+          this.$refs.scroll.MyScrollTo(0,-this.$refs.tabControl2.$el.offsetTop,1)
       },
       // 监听按钮，点击后回到顶部
       topClick(){
@@ -159,7 +162,8 @@ import { getSwiper,getHomeMultidata } from 'network/home';
         this.isShow = Math.abs(position.y) > 1000
         // console.log(position);
         // 判断是否吸顶
-        this.contrShow =  Math.abs(position.y) > this.$refs.tabControl2.$el.offsetTop
+        this.contrShow =  Math.abs(position.y) > this.$refs.tabControl2.$el.offsetTop;
+        this.nowPosition = Math.abs(position.y)
       },
       swiperTop(){
         this.tabControlTop =  this.$refs.tabControl2.$el.offsetTop

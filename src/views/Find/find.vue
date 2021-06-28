@@ -8,10 +8,10 @@
         分类
       </template>
     </nav-bar>
-    <scroll class="find-scroll1 content" ref="detailScroll" style="height:100%">
-      <li v-for="(item,index) in zuobian" :key="index">{{item}}</li>
+    <scroll class="find-scroll1 content" ref="detailScroll">
+      <li v-for="(item,index) in zuobian" :key="index" :class="{active:index==isActive}" @click="changeActive(index)">{{item}}</li>
     </scroll> 
-    <scroll class="find-scroll2 content" ref="scroll2">
+    <scroll class="find-scroll2 content" ref="scroll2" :probe-type="3" @position="rightPosition">
       <goods :goods="youbian" />
     </scroll>
    
@@ -28,9 +28,15 @@ import {getHomeMultidata} from 'network/home'
     name:'find',
     data(){
       return {
+        // 这里是每个分类的名称，要在数据库获取
         zuobian:['aaa','bbb','ccc','ddd','aaa','bbb',
         'ccc','ddd','aaa'],
-        youbian:[]
+        // 商品数据
+        youbian:[],
+        // 左边的分类栏哪个处于活跃
+        isActive:0,
+        // 这里需要获取每个分类的位置，存入数组
+        zuobianP:[111,222,333,444,555,666,777,888,1200]
 
       }
     },
@@ -43,7 +49,16 @@ import {getHomeMultidata} from 'network/home'
       getHomeMultidata('pop',1).then((data)=>this.youbian=data)
     },
     methods: {
-
+      changeActive(index){
+        this.isActive = index;
+        this.$refs.scroll2.MyScrollTo(0,-this.zuobianP[index],20)
+      },
+      rightPosition(position){
+        for(let i in this.zuobian){
+          if(Math.abs(position.y) > this.zuobianP[i]-1)
+           this.isActive = i
+        }
+      }
     },
   }
 </script>
@@ -57,7 +72,7 @@ import {getHomeMultidata} from 'network/home'
   .find-scroll1{
     width:27%;
     background-color: rgb(235, 235, 235);
-    padding: 2px 3px;
+    padding: 3px;
     text-align: center;
     height: 100%;
   }
@@ -67,7 +82,13 @@ import {getHomeMultidata} from 'network/home'
   }
   li{
     list-style: none;
-    padding: 4px 0;
+    padding: 10px 0;
+    border: 1px solid #ebebeb;
+  }
+  .active{
+    background-color: white;
+    border:1px solid black;
+    border-radius: 4px;
   }
   .find-nav{
      background-color:pink;

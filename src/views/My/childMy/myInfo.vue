@@ -1,6 +1,6 @@
 <template>
   <div class="myInfo">
-    <img src="~assets/img/test.png" alt="">
+    <img src="~assets/img/dog.jpg" alt="">
     <span>用户昵称</span>
     <span class="myInfo-detail">></span>
   </div>
