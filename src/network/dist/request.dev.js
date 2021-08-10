@@ -12,6 +12,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 function request(config) {
   var instance = _axios["default"].create({
     // baseURL请使用本机本地地址
+    // 测试一下
     // baseURL:"http://localhost:3000",
     baseURL: "http://192.168.31.6:3000",
     timeout: 5000
