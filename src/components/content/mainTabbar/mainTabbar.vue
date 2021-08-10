@@ -66,5 +66,5 @@ import item from "components/common/tabbar/tabbarItem"
   }
 </script>
 <style lang=''>
-  
+
 </style>

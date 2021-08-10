@@ -9,7 +9,11 @@
         <div :class="{active:isShow}">
           <slot name="text"><div>首页</div></slot></div> -->
       <!-- 用route判断组件是否活跃，如果是，将使用者传入的颜色赋值 -->
-      <div :style="isactive"><slot name="text"><div>首页</div></slot></div>
+      <div :style="isactive">
+        <slot name="text">
+          <div>首页</div>
+        </slot>
+      </div>
     </div>
 </template>
 <script>
